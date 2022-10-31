@@ -28,6 +28,7 @@
 //
 // ****************************************************************************
 var DJCi500 = {};
+DJCi500.deckName = "DJ Control Inpulse 500";
 ///////////////////////////////////////////////////////////////
 //                       USER OPTIONS                        //
 ///////////////////////////////////////////////////////////////
@@ -98,6 +99,7 @@ DJCi500.vuMeterUpdateDeck = function(value, group, _control, _status) {
 };
 
 DJCi500.init = function() {
+    print("Initializing " + DJCi500.deckName + "...")
     // Scratch button state
     DJCi500.scratchButtonState = true;
     // Scratch Action
@@ -129,7 +131,7 @@ DJCi500.init = function() {
 
 	engine.getValue("[Master]", "VuMeterL", "DJCi500.vuMeterUpdateMaster");
     engine.getValue("[Master]", "VuMeterR", "DJCi500.vuMeterUpdateMaster");
-	engine.getValue("[Controls]", "AutoHotcueColors", "DJCi500.AutoHotcueColors");
+	//engine.getValue("[Controls]", "AutoHotcueColors", "DJCi500.AutoHotcueColors"); // gives developer warning Warning [Controller]: ControllerEngine: Unknown control "[Controls]" "AutoHotcueColors" , returning 0.0
 
     //Ev3nt1ne Code
     var fx1D1Connection = engine.makeConnection('[EffectRack1_EffectUnit1_Effect1]', 'enabled', DJCi500.fx1D1Callback);
@@ -160,6 +162,7 @@ DJCi500.init = function() {
     }
 
     DJCi500.FxLedtimer = engine.beginTimer(250,"DJCi500.blinkFxLed()");
+    print(DJCi500.deckName + " initialized.")
 };
 
 
