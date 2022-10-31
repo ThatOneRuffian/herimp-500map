@@ -3688,7 +3688,7 @@
 				<status>0x96</status>
 				<midino>0x08</midino>
 				<on>0x60</on>
-				<off>0x40</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3698,7 +3698,7 @@
 				<status>0x96</status>
 				<midino>0x09</midino>
 				<on>0x1C</on>
-				<off>0x10</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3708,7 +3708,7 @@
 				<status>0x96</status>
 				<midino>0x0A</midino>
 				<on>0x1F</on>
-				<off>0x12</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3718,7 +3718,7 @@
 				<status>0x96</status>
 				<midino>0x0B</midino>
 				<on>0x7C</on>
-				<off>0x50</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3728,7 +3728,7 @@
 				<status>0x96</status>
 				<midino>0x0C</midino>
 				<on>0x03</on>
-				<off>0x02</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3738,7 +3738,7 @@
 				<status>0x96</status>
 				<midino>0x0D</midino>
 				<on>0x63</on>
-				<off>0x42</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3748,7 +3748,7 @@
 				<status>0x96</status>
 				<midino>0x0E</midino>
 				<on>0x73</on>
-				<off>0x7B</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3758,7 +3758,7 @@
 				<status>0x96</status>
 				<midino>0x0F</midino>
 				<on>0x7F</on>
-				<off>0x52</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3768,7 +3768,7 @@
 				<status>0x97</status>
 				<midino>0x08</midino>
 				<on>0x60</on>
-				<off>0x40</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3778,7 +3778,7 @@
 				<status>0x97</status>
 				<midino>0x09</midino>
 				<on>0x1C</on>
-				<off>0x10</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3788,7 +3788,7 @@
 				<status>0x97</status>
 				<midino>0x0A</midino>
 				<on>0x1F</on>
-				<off>0x12</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3798,7 +3798,7 @@
 				<status>0x97</status>
 				<midino>0x0B</midino>
 				<on>0x7C</on>
-				<off>0x50</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3808,7 +3808,7 @@
 				<status>0x97</status>
 				<midino>0x0C</midino>
 				<on>0x03</on>
-				<off>0x02</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3818,7 +3818,7 @@
 				<status>0x97</status>
 				<midino>0x0D</midino>
 				<on>0x63</on>
-				<off>0x42</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3828,7 +3828,7 @@
 				<status>0x97</status>
 				<midino>0x0E</midino>
 				<on>0x73</on>
-				<off>0x7B</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<output>
@@ -3838,7 +3838,7 @@
 				<status>0x97</status>
 				<midino>0x0F</midino>
 				<on>0x7F</on>
-				<off>0x52</off>
+				<off>0x00</off>
 				<minimum>0.5</minimum>
 			</output>
 			<!--LED Roll-->
