@@ -99,6 +99,14 @@ DJCi500.vuMeterUpdateDeck = function(value, group, _control, _status) {
 	midi.sendShortMsg(status, 0x40, value);
 };
 
+DJCi500.vuMeterMicAux = function(value, group, _control, _status) {
+	value = (value * 122) + 5;
+    var threshold = 35;
+    if (value > 35){
+        midi.sendShortMsg(0x90, 0x10, value);
+    }
+};
+
 DJCi500.init = function() {
     print("Initializing " + DJCi500.deckName + "...")
     // Scratch button state
@@ -129,6 +137,9 @@ DJCi500.init = function() {
 	engine.getValue("[Channel2]", "VuMeter", "DJCi500.vuMeterUpdateDeck");
     engine.connectControl("[Master]", "VuMeterL", "DJCi500.vuMeterUpdateMaster");
     engine.connectControl("[Master]", "VuMeterR", "DJCi500.vuMeterUpdateMaster");
+
+    engine.connectControl("[Microphone]", "VuMeter", "DJCi500.vuMeterMicAux");
+    engine.getValue("[Microphone]", "Microphone VU meter changes", "DJCi500.vuMeterMicAux");
 
 	engine.getValue("[Master]", "VuMeterL", "DJCi500.vuMeterUpdateMaster");
     engine.getValue("[Master]", "VuMeterR", "DJCi500.vuMeterUpdateMaster");
@@ -170,9 +181,7 @@ DJCi500.init = function() {
 // These LEDs have trouble turning on, let's help them for now...
 DJCi500.ledHelper = function(_channel, _control, value, status, _group) {
     midi.sendShortMsg(0x90, 0x03, 0x7f);  //turn on assistant LED
-    //these knobs blink on and then are turned off- other forces at work?
     //midi.sendShortMsg(0x90, 0x12, 0x7f);  //turn on AUX LED
-    //midi.sendShortMsg(0x90, 0x10, 0x7f);  //turn on mic volume LED
     engine.stopTimer(DJCi500.LedHelpertimer);
 }
 
