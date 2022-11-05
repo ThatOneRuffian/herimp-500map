@@ -367,7 +367,7 @@
             <control>
                 <group>[Master]</group>
                 <key>headGain</key>
-                <description>MIDI Learned from 1618 messages.</description>
+                <description>Headphone Volume</description>
                 <status>0xB0</status>
                 <midino>0x04</midino>
                 <options>
@@ -458,7 +458,7 @@
             <control>
                 <group>[Master]</group>
                 <key>headMix</key>
-                <description>MIDI Learned from 6298 messages.</description>
+                <description>Headphone Cue/Master</description>
                 <status>0xB0</status>
                 <midino>0x05</midino>
                 <options>
@@ -544,6 +544,17 @@
                 <midino>0x06</midino>
                 <options>
                     <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Microphone]</group>
+                <key>pregain</key>
+                <description>Microphone Volume</description>
+                <status>0xB0</status>
+                <midino>0x06</midino>
+                <options>
+                    <soft-takeover/>
+                    <fourteen-bit-msb/>
                 </options>
             </control>
             <control>
@@ -1527,7 +1538,7 @@
             <control>
                 <group>[Master]</group>
                 <key>headGain</key>
-                <description>MIDI Learned from 1618 messages.</description>
+                <description>Headphone Volume</description>
                 <status>0xB0</status>
                 <midino>0x24</midino>
                 <options>
@@ -1558,7 +1569,7 @@
             <control>
                 <group>[Master]</group>
                 <key>headMix</key>
-                <description>MIDI Learned from 6298 messages.</description>
+                <description>Headphone Cue/Master</description>
                 <status>0xB0</status>
                 <midino>0x25</midino>
                 <options>
@@ -1584,6 +1595,17 @@
                 <midino>0x26</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Microphone]</group>
+                <key>pregain</key>
+                <description>Microphone Volume</description>
+                <status>0xB0</status>
+                <midino>0x26</midino>
+                <options>
+                    <soft-takeover/>
+                    <fourteen-bit-lsb/>
                 </options>
             </control>
             <control>
