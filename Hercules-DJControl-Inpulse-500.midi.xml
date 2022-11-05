@@ -315,6 +315,16 @@
                 </options>
             </control>
             <control>
+                <group>[Master]</group>
+                <key>gain</key>
+                <description>Master volume</description>
+                <status>0xB0</status>
+                <midino>0x03</midino>
+                <options>
+                    <soft-takeover/>
+                </options>
+            </control>
+            <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>parameter2</key>
                 <description>EQ MID Deck A</description>
