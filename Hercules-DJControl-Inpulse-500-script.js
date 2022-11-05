@@ -181,7 +181,6 @@ DJCi500.init = function() {
 // These LEDs have trouble turning on, let's help them for now...
 DJCi500.ledHelper = function(_channel, _control, value, status, _group) {
     midi.sendShortMsg(0x90, 0x03, 0x7f);  //turn on assistant LED
-    //midi.sendShortMsg(0x90, 0x12, 0x7f);  //turn on AUX LED
     engine.stopTimer(DJCi500.LedHelpertimer);
 }
 
