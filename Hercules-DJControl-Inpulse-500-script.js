@@ -102,7 +102,7 @@ DJCi500.vuMeterUpdateDeck = function(value, group, _control, _status) {
 DJCi500.vuMeterMicAux = function(value, group, _control, _status) {
 	value = (value * 122) + 5;
     var threshold = 35;
-    if (value > 35){
+    if (value > threshold){
         midi.sendShortMsg(0x90, 0x10, value);
     }
 };
