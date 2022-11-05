@@ -47,6 +47,7 @@ DJCi500.kScratchActionScratch = 1;
 DJCi500.kScratchActionSeek = 2;
 DJCi500.kScratchActionBend = 3;
 DJCi500.FxLedtimer;
+DJCi500.LedHelpertimer;
 
 //Ev3nt1ne Global Var:
 DJCi500.FxD1Active = [0, 0, 0]; //Here I decided to put only 3 effects
@@ -162,9 +163,18 @@ DJCi500.init = function() {
     }
 
     DJCi500.FxLedtimer = engine.beginTimer(250,"DJCi500.blinkFxLed()");
+    DJCi500.LedHelpertimer = engine.beginTimer(5,"DJCi500.ledHelper()");
     print(DJCi500.deckName + " initialized.")
 };
 
+// These LEDs have trouble turning on, let's help them for now...
+DJCi500.ledHelper = function(_channel, _control, value, status, _group) {
+    midi.sendShortMsg(0x90, 0x03, 0x7f);  //turn on assistant LED
+    //these knobs blink on and then are turned off- other forces at work?
+    //midi.sendShortMsg(0x90, 0x12, 0x7f);  //turn on AUX LED
+    //midi.sendShortMsg(0x90, 0x10, 0x7f);  //turn on mic volume LED
+    engine.stopTimer(DJCi500.LedHelpertimer);
+}
 
 // The Vinyl button, used to enable or disable scratching on the jog wheels (One per deck).
 
@@ -1069,6 +1079,7 @@ DJCi500.shutdown = function() {
 
     //cleanup
     engine.stopTimer(DJCi500.FxLedtimer);
+    engine.stopTimer(DJCi500.LedHelpertimer);
 
     //var controlsToFunctions = {'beat_active': 'DJCi500.slicerBeatActive'}
     //script.bindConnections('[Channel1]', controlsToFunctions, false);
