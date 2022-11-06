@@ -173,7 +173,6 @@ DJCi500.init = function() {
     }
 
     DJCi500.FxLedtimer = engine.beginTimer(250,"DJCi500.blinkFxLed()");
-    DJCi500.LedHelpertimer = engine.beginTimer(5,"DJCi500.ledHelper()");
     print(DJCi500.deckName + " initialized.")
 };
 
