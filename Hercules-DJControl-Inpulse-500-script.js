@@ -48,13 +48,14 @@ DJCi500.kScratchActionSeek = 2;
 DJCi500.kScratchActionBend = 3;
 DJCi500.FxLedtimer;
 
-//Ev3nt1ne Global Var:
+//Global Vars:
 DJCi500.FxD1Active = [0, 0, 0]; //Here I decided to put only 3 effects
 DJCi500.FxD2Active = [0, 0, 0]; //Here I decided to put only 3 effects
 DJCi500.FxDeckSel = 0; // state variable for fx4 to decide the deck
 DJCi500.pitchRanges = [0.08, 0.32, 1]; //select pitch range
 DJCi500.pitchRangesId = [0, 0]; //id of the array, one for each deck
 DJCi500.slowPauseSetState = [0, 0];
+DJCi500.microphoneStatus = [0, 127]; //current peak, noise floor
 ///////////////////////////////////////////////////////////////
 //                          SLICER                           //
 ///////////////////////////////////////////////////////////////
@@ -99,10 +100,29 @@ DJCi500.vuMeterUpdateDeck = function(value, group, _control, _status) {
 };
 
 DJCi500.vuMeterMicAux = function(value, group, _control, _status) {
-	value = (value * 122) + 5;
-    var threshold = 35;
-    if (value > threshold){
-        midi.sendShortMsg(0x90, 0x10, value);
+    value = (value * 127);
+    var noiseFloorMul = 1.75;
+    var clippingLevel = 115;
+    var greenLed = 0x10;
+    var redLed = 0x11;
+    var activeLed = greenLed;
+
+    //determine clipping color of mic vuMeter led based on input levels
+    if (value >= clippingLevel){
+        activeLed = redLed;
+    }
+
+    //attempt to find noise floor
+    if (value < DJCi500.microphoneStatus[1]){
+        DJCi500.microphoneStatus[1] = value;
+    }
+
+    //illuminate mic vuMeter
+    if (value >= DJCi500.microphoneStatus[0] && value > DJCi500.microphoneStatus[1]*noiseFloorMul){
+        midi.sendShortMsg(0x90, activeLed, value);
+        DJCi500.microphoneStatus[0] = value-1; // set new threshold
+    }else if (value < DJCi500.microphoneStatus[0] && value > DJCi500.microphoneStatus[1]*noiseFloorMul ){
+        DJCi500.microphoneStatus[0] -= 5;  // decay current threshold
     }
 };
 
