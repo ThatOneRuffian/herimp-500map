@@ -9,8 +9,8 @@
     </info>
     <controller id="DJControl">
         <scriptfiles>
-            <file functionprefix="" filename="midi-components-0.0.js"/>
-            <file functionprefix="DJCi500" filename="Hercules-DJControl-Inpulse-500-script.js"/>
+            <file filename="midi-components-0.0.js" functionprefix=""/>
+            <file filename="Hercules-DJControl-Inpulse-500-script.js" functionprefix="DJCi500"/>
         </scriptfiles>
         <controls>
             <control>
@@ -334,6 +334,16 @@
                 </options>
             </control>
             <control>
+                <group>[Master]</group>
+                <key>gain</key>
+                <description>MIDI Learned from 1086 messages.</description>
+                <status>0xB0</status>
+                <midino>0x03</midino>
+                <options>
+                    <fourteen-bit-msb/>
+                </options>
+            </control>
+            <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>DJCi500.deckA.eqKnob[2].inputMSB</key>
                 <description>EQ MID Deck A</description>
@@ -391,6 +401,16 @@
                 <midino>0x04</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Master]</group>
+                <key>headGain</key>
+                <description>MIDI Learned from 826 messages.</description>
+                <status>0xB0</status>
+                <midino>0x04</midino>
+                <options>
+                    <fourteen-bit-msb/>
                 </options>
             </control>
             <control>
@@ -474,13 +494,13 @@
                 </options>
             </control>
             <control>
-                <group>[Auxiliary1]</group>
-                <key>pfl</key>
-                <description>MIDI Learned from 4 messages.</description>
+                <group>[Master]</group>
+                <key>headMix</key>
+                <description>MIDI Learned from 1054 messages.</description>
                 <status>0xB0</status>
                 <midino>0x05</midino>
                 <options>
-                    <normal/>
+                    <fourteen-bit-msb/>
                 </options>
             </control>
             <control>
@@ -1330,13 +1350,13 @@
                 </options>
             </control>
             <control>
-                <group>[Channel]</group>
-                <key>DJCi500.deckSelector</key>
-                <description>Activate Deck1 (FX1 button)</description>
+                <group>[EffectRack1_EffectUnit1_Effect1]</group>
+                <key>enabled</key>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x90</status>
                 <midino>0x14</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -1380,13 +1400,13 @@
                 </options>
             </control>
             <control>
-                <group>[Channel]</group>
-                <key>DJCi500.deckSelector</key>
-                <description>Activate Deck2 (FX2 button)</description>
+                <group>[EffectRack1_EffectUnit2_Effect1]</group>
+                <key>enabled</key>
+                <description>MIDI Learned from 6 messages.</description>
                 <status>0x90</status>
                 <midino>0x15</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -1430,13 +1450,13 @@
                 </options>
             </control>
             <control>
-                <group>[Channel]</group>
-                <key>DJCi500.deckSelector</key>
-                <description>Activate Deck3 (FX3 button)</description>
+                <group>[EffectRack1_EffectUnit1_Effect2]</group>
+                <key>enabled</key>
+                <description>MIDI Learned from 2 messages.</description>
                 <status>0x90</status>
                 <midino>0x16</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -1480,13 +1500,13 @@
                 </options>
             </control>
             <control>
-                <group>[Channel]</group>
-                <key>DJCi500.deckSelector</key>
-                <description>Activate Deck4 (FX4 button)</description>
+                <group>[EffectRack1_EffectUnit2_Effect2]</group>
+                <key>enabled</key>
+                <description>MIDI Learned from 4 messages.</description>
                 <status>0x90</status>
                 <midino>0x17</midino>
                 <options>
-                    <script-binding/>
+                    <normal/>
                 </options>
             </control>
             <control>
@@ -1820,6 +1840,16 @@
                 </options>
             </control>
             <control>
+                <group>[Master]</group>
+                <key>gain</key>
+                <description>MIDI Learned from 1086 messages.</description>
+                <status>0xB0</status>
+                <midino>0x23</midino>
+                <options>
+                    <fourteen-bit-lsb/>
+                </options>
+            </control>
+            <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>DJCi500.deckA.eqKnob[2].inputLSB</key>
                 <description>EQ MID Deck A</description>
@@ -1860,6 +1890,16 @@
                 </options>
             </control>
             <control>
+                <group>[Master]</group>
+                <key>headGain</key>
+                <description>MIDI Learned from 826 messages.</description>
+                <status>0xB0</status>
+                <midino>0x24</midino>
+                <options>
+                    <fourteen-bit-lsb/>
+                </options>
+            </control>
+            <control>
                 <group>[EqualizerRack1_[Channel1]_Effect1]</group>
                 <key>DJCi500.deckA.eqKnob[3].inputLSB</key>
                 <description>EQ HIGH Deck A</description>
@@ -1897,6 +1937,16 @@
                 <midino>0x25</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Master]</group>
+                <key>headMix</key>
+                <description>MIDI Learned from 1054 messages.</description>
+                <status>0xB0</status>
+                <midino>0x25</midino>
+                <options>
+                    <fourteen-bit-lsb/>
                 </options>
             </control>
             <control>
