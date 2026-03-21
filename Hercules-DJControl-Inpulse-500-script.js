@@ -199,6 +199,32 @@ DJCi500.numberIndicator = function(value, group, _control) {
     }
 };
 
+// AutoDJ toggle + LED
+DJCi500.autoDJToggle = function(_channel, _control, value, _status, _group) {
+    if (value) {
+        const current = engine.getValue("[AutoDJ]", "enabled");
+        engine.setValue("[AutoDJ]", "enabled", current ? 0 : 1);
+    }
+};
+
+DJCi500.autoDJLED = function(value, _group, _control) {
+    midi.sendShortMsg(0x90, 0x03, value ? 0x7F : 0x00);
+};
+
+// FX button LEDs (0x90 0x14-0x17) — reflects Effect enabled state for each unit/slot
+DJCi500.fxButtonLED = function(value, group, _control) {
+    const ledMap = {
+        "[EffectRack1_EffectUnit1_Effect1]": 0x14,
+        "[EffectRack1_EffectUnit2_Effect1]": 0x15,
+        "[EffectRack1_EffectUnit1_Effect2]": 0x16,
+        "[EffectRack1_EffectUnit2_Effect2]": 0x17,
+    };
+    const note = ledMap[group];
+    if (note !== undefined) {
+        midi.sendShortMsg(0x90, note, value ? 0x7F : 0x00);
+    }
+};
+
 DJCi500.fxSelIndicator = function(_value, group, _control, _status) {
     const deckA = DJCi500.deckA.currentDeck;
     const deckB = DJCi500.deckB.currentDeck;
@@ -1098,6 +1124,15 @@ DJCi500.init = function() {
     engine.makeConnection("[Channel2]", "peak_indicator", DJCi500.vuMeterPeakDeck).trigger();
     engine.makeConnection("[Channel3]", "peak_indicator", DJCi500.vuMeterPeakDeck).trigger();
     engine.makeConnection("[Channel4]", "peak_indicator", DJCi500.vuMeterPeakDeck).trigger();
+
+    // AutoDJ LED
+    engine.makeConnection("[AutoDJ]", "enabled", DJCi500.autoDJLED).trigger();
+
+    // FX button LEDs — stay in sync when effects are toggled from Mixxx UI
+    engine.makeConnection("[EffectRack1_EffectUnit1_Effect1]", "enabled", DJCi500.fxButtonLED).trigger();
+    engine.makeConnection("[EffectRack1_EffectUnit2_Effect1]", "enabled", DJCi500.fxButtonLED).trigger();
+    engine.makeConnection("[EffectRack1_EffectUnit1_Effect2]", "enabled", DJCi500.fxButtonLED).trigger();
+    engine.makeConnection("[EffectRack1_EffectUnit2_Effect2]", "enabled", DJCi500.fxButtonLED).trigger();
 
     // Update the fx rack selection
     DJCi500.fxSelIndicator(0, "[EffectRack1_EffectUnit1]", 0, 0);
