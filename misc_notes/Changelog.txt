@@ -1,4 +1,32 @@
 
+10:
+	Crossfader curve: added middle "circle" mode (0x40 → curve=63, linear fader mapping)
+		Hardware 3-position switch: 0x00=smooth, 0x40=circle, 0x7F=scratch
+		Verify 0x40 is correct with --developer mode if circle position doesn't respond
+
+9:
+	Browser knob LED now shows track time remaining: violet > yellow > orange > red
+		updates every 250ms via tempoLEDs timer; reflects closest-to-ending playing deck
+	Slicer: shift+pad1 now resets playback to start of current 8-beat domain
+	Slicer: loop domain offset — when loop active, 8-beat domain aligned to loop start beat
+		fixes "se il loop non inizia sull'1" bug; uses loop_start_position / track_samplerate
+	Slicer: safe positive modulo ((x % n + n) % n) prevents negative beat index edge cases
+	Spinback: SHIFT+SLIP now does hold-to-spinback (slip LED feedback unchanged)
+		Added XML entries for 0x94/0x95 midino 0x01 to route shift+slip to slipButton
+
+8:
+	Fixed critical bug: crossfader was using deprecated [Master] group → [Main]
+	Fixed slicer multi-press: timer IDs now stored and cancelled on new button press,
+		so pressing a different pad mid-beat re-arms the slip timer correctly
+	Fixed slicer LEDs: now show current beat position (white) AND pressed pad (orange)
+		simultaneously instead of mutually exclusive display
+	Fixed init() LED startup: makeConnection() now uses .trigger() so LEDs reflect
+		actual state on load instead of being dead calls
+	Added soft takeover for pitch faders on all 4 channels — prevents snap on deck switch
+	Added keylock LED feedback: quant button now shows dim blue when keylock is on
+		without quantize, bright white when quantize is on (or both)
+	quantKeylockLED() updates properly on deck channel switch via updateDeckStatus()
+
 7:
 	Added BeatAlign and Tempo OK
 	Fixed play while cueing

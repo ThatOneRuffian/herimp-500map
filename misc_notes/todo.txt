@@ -15,10 +15,10 @@ done:          A: when fx4=0 (default) Fx1-3 flip the state. It's ok but not whe
                             voglio anche con fx4
 
 
-5: the 3 mode on the crossfader (smooth, abrupt and circle)
-    need to understand where they go in mixxx
+5: DONE - 3 crossfader curve modes: 0x00=smooth(0), 0x40=circle(63), 0x7F=scratch(127)
+    NOTE: verify 0x40 is the actual MIDI value for circle with --developer mode
 
-6: the browser knob: don't make it flash as default but make it change color based on the point of the song execution (violet to red when the song is ending)
+6: DONE - browser knob changes color by time left: violet → yellow → orange → red
 
 8: when I press shift a lot of lights disappear (but not the hot cue ones)
     it can be cool to exploit this behavior
@@ -46,16 +46,16 @@ done:          A: when fx4=0 (default) Fx1-3 flip the state. It's ok but not whe
 23: fix errors in --developer mode
 
 24: slicer:
-        b: add the loop variant
-        c: make so shift+1 reset the beat to 0/1
-        d: change lights: light up the continuing shit + the button I press
+        b: DONE - loop variant: domain offset from loop_start_position/track_samplerate
+        c: DONE - shift+pad1 resets to start of current domain
+        d: DONE - lights show current position (white) + pressed pad (orange)
 
-        problema: se il loop non inizia sull'1. --> convertire.
-        problema: talvolta non funziona, al momento non c'è il -8
-        se premo più volte non funziona
+        problema: se il loop non inizia sull'1. --> FIXED via loop start beat offset
+        problema: talvolta non funziona, al momento non c'è il -8  [FIXED: multi-press now works]
+        se premo più volte non funziona  [FIXED]
 
 
-25: implement rewind
+25: DONE - rewind: shift+cue already does start_play (jump to beginning); spinback on shift+slip
 
 
 27: instead of putting sampler cue with the shift try to find a real stop

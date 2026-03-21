@@ -1061,6 +1061,15 @@ DJCi500.init = function() {
     // the corresponding GUI controls in MIXXX.
     midi.sendShortMsg(0xB0, 0x7F, 0x7F);
 
+    // Force faders to center after broadcast response has time to arrive.
+    // Crossfader doesn't respond to broadcast; tempo faders do but may be slightly off-center.
+    engine.beginTimer(300, function() {
+        engine.setValue("[Master]", "crossfader", 0);
+        for (const ch of ["[Channel1]", "[Channel2]", "[Channel3]", "[Channel4]"]) {
+            engine.setValue(ch, "rate", 0);
+        }
+    }, true);
+
     // Turn on lights:
     for (let i = 0; i < 2; i++) {
         // PAD 5 Key and tempo range controls
@@ -1375,7 +1384,7 @@ DJCi500.tempoLEDs = function() {
     }// else tempo
 
     // Browser knob: color reflects time left on the closest-to-ending playing deck
-    // violet → yellow → orange → red as track approaches end
+    // blue → yellow → orange → red as track approaches end
     let minSecsLeft = Infinity;
     for (const grp of [deckA, deckB]) {
         if (engine.getValue(grp, "play_latched")) {
@@ -1387,7 +1396,7 @@ DJCi500.tempoLEDs = function() {
     }
     let browserColor;
     if (minSecsLeft > 60) {
-        browserColor = 0x42; // violet: plenty of time
+        browserColor = 0x03; // blue: plenty of time
     } else if (minSecsLeft > 30) {
         browserColor = 0x7C; // yellow: under a minute
     } else if (minSecsLeft > 15) {
